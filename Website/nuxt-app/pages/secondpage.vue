@@ -1,9 +1,35 @@
 <template>
-    <div v-locomotive-scroll>
-      <h1>Welcome to the second page</h1>
+    <div :class="[$colorMode.preference]">
+      <topbar />
       wassuppp
       <p>
       <nuxt-link to="/">Go to the home page</nuxt-link>
       </p>
+      <button @click="toggleColorMode">
+      Switch to {{ $colorMode.preference === 'dark' ? 'Light' : 'Dark' }} Mode
+      </button>
     </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    toggleColorMode() {
+      this.$colorMode.preference =
+        this.$colorMode.preference === "dark" ? "light" : "dark";
+    },
+  },
+};
+</script>
+
+<style scoped>
+.light {
+  background-color: white;
+  color: black;
+}
+
+.dark {
+  background-color: black;
+  color: white;
+}
+</style>
